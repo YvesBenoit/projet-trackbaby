@@ -1,3 +1,5 @@
+import os
+
 # Définition des constantes pour les garçons
 low_weights_boys = [2.6, 3.6, 4.5, 5.2, 5.8, 6.2, 6.6, 6.9, 7.2, 7.4, 7.7, 7.9, 8.1, 8.2, 8.4, 8.6, 8.8,
 8.9, 9.1, 9.3, 9.4, 9.6, 9.8, 9.9, 10.1, 10.2, 10.4, 10.5, 10.7, 10.8, 11, 11.1, 11.2, 11.4, 11.5, 11.6,
@@ -53,8 +55,11 @@ high_skulls_girls = [35.8, 38.5, 40.2, 41.6, 42.7, 43.6, 44.3, 45, 45.6, 46, 46.
 50.8, 50.9, 51, 51.1, 51.2, 51.2, 51.3, 51.4, 51.4, 51.5, 51.6, 51.6, 51.7, 51.7, 51.8, 51.8, 51.9, 51.9, 52, 52,
 52.1, 52.1, 52.2, 52.2, 52.3]
 
+# affichage initial et initialisations
 
-print ( "Bienvenue dans ce programme de vérification des constantes de votre nourisson !")
+os.system('clear')
+
+print ( "\nBienvenue dans ce programme de vérification des constantes de votre nourisson !\n\n")
 ko=True
 genre="undefined"
 age = -1
@@ -63,14 +68,15 @@ taille="undefined"
 perimetre="undefined"
 
 # ======================================================
-#    saisies sexe age poids taille et périmetre cranien
+#    saisie du genre du nourrisson 
 #=======================================================
 
 while genre != 'f' and genre != 'F' and genre != 'g' and genre != 'G' :
     genre = input("Entrez le genre de votre nourisson ('g' pour garçon, 'f' pour fille) : ")
     
 genre = genre.upper()
-# print (genre)
+
+# Affectation des tables à utiliser en fonction du sexe du nourrisson
 if genre == "G" :
     nourisson = "Garçon"
     article = " un "
@@ -90,6 +96,11 @@ else:
     table_min_perimetre = low_skulls_girls
     table_max_perimetre = high_skulls_girls
 
+
+
+# ======================================================
+#    saisies age poids taille et périmetre cranien
+#=======================================================
 
 ko=True
 while ko :
@@ -132,33 +143,28 @@ while ko :
 # =======================
 #    lecture des tables
 #========================
-print()
-print("La norme de poids pour " + article + nourisson + " de " +str(age) + " mois est située")
+
+print("\nLa norme de poids pour " + article + nourisson + " de " +str(age) + " mois est située")
 print(f" entre {table_min_poids[age]} et {table_max_poids[age]}  kg")
 if poids >= table_min_poids[age] and poids <= table_max_poids[age] :
-    print(f"Le poids de votre {nourisson} ({poids} kg) est dans la norme")
+    print(f"Le poids de votre {nourisson} ({poids} kg) est dans la norme\n")
 else :
-    print(f"Le poids de votre {nourisson} ({poids} kg) n'est pas dans la norme !!!")
+    print(f"Le poids de votre {nourisson} ({poids} kg) n'est pas dans la norme !!!\n")
 
-print()
-print("La norme de taille pour " + article + nourisson + " de " +str(age) + " mois est située")
+
+print("\nLa norme de taille pour " + article + nourisson + " de " +str(age) + " mois est située")
 print(f" entre {table_min_taille[age]} et {table_max_taille[age]}  cm")
 if taille >= table_min_taille[age] and taille <= table_max_taille[age] :
-    print(f"Le taille de votre {nourisson} ({taille} cm) est dans la norme")
+    print(f"Le taille de votre {nourisson} ({taille} cm) est dans la norme\n")
 else :
-    print(f"Le taille de votre {nourisson} ({taille} cm) n'est pas dans la norme !!!")
+    print(f"Le taille de votre {nourisson} ({taille} cm) n'est pas dans la norme !!!\n")
 
-print()
-print("La norme de perimetre pour " + article + nourisson + " de " +str(age) + " mois est située")
+
+print("\nLa norme de perimetre pour " + article + nourisson + " de " +str(age) + " mois est située")
 print(f" entre {table_min_perimetre[age]} et {table_max_perimetre[age]}  cm")
 if perimetre >= table_min_perimetre[age] and perimetre <= table_max_perimetre[age] :
-    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) est dans la norme")
+    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) est dans la norme\n")
 else :
-    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) n'est pas dans la norme !!!")
-print()
+    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) n'est pas dans la norme !!!\n")
 
 
-
-
-# La norme de poids pour une <nourisson> de <age> mois est situé entre <poids> kg et <poids> kg
-# Le poids de votre nourisson en kg : <poids>
