@@ -52,3 +52,113 @@ high_skulls_girls = [35.8, 38.5, 40.2, 41.6, 42.7, 43.6, 44.3, 45, 45.6, 46, 46.
 48.1, 48.3, 48.5, 48.7, 48.9, 49, 49.2, 49.3, 49.5, 49.6, 49.8, 49.9, 50, 50.1, 50.2, 50.4, 50.5, 50.6, 50.7, 50.7,
 50.8, 50.9, 51, 51.1, 51.2, 51.2, 51.3, 51.4, 51.4, 51.5, 51.6, 51.6, 51.7, 51.7, 51.8, 51.8, 51.9, 51.9, 52, 52,
 52.1, 52.1, 52.2, 52.2, 52.3]
+
+
+print ( "Bienvenue dans ce programme de vérification des constantes de votre nourisson !")
+ko=True
+genre="undefined"
+age = -1
+poids=0
+taille="undefined"
+perimetre="undefined"
+
+# ======================================================
+#    saisies sexe age poids taille et périmetre cranien
+#=======================================================
+
+while genre != 'f' and genre != 'F' and genre != 'g' and genre != 'G' :
+    genre = input("Entrez le genre de votre nourisson ('g' pour garçon, 'f' pour fille) : ")
+    
+genre = genre.upper()
+# print (genre)
+if genre == "G" :
+    nourisson = "Garçon"
+    article = " un "
+    table_min_poids = low_weights_boys
+    table_max_poids = high_weights_boys
+    table_min_taille = low_heights_boys
+    table_max_taille = high_heights_boys
+    table_min_perimetre = low_skulls_boys
+    table_max_perimetre = high_skulls_boys
+else:
+    nourisson = "Fille"
+    article = " une "
+    table_min_poids = low_weights_girls
+    table_max_poids = high_weights_girls
+    table_min_taille = low_heights_girls
+    table_max_taille = high_heights_girls
+    table_min_perimetre = low_skulls_girls
+    table_max_perimetre = high_skulls_girls
+
+
+ko=True
+while ko :
+    age = input("Entrez l'age en mois de votre "+nourisson+" : ")
+    try:
+        age = int(age)
+        if age >=0 and age <= 60 :
+            ko=False
+    except ValueError:
+        print("Entrez un nombre entier.")
+    
+
+ko=True
+while ko :
+    poids = input("Entrez le poids en kilos de votre "+nourisson+" : ")
+    try:
+        poids = float(poids)
+        ko=False
+    except ValueError:
+        print("Entrez un nombre.")
+
+ko=True
+while ko :
+    taille = input("Entrez le taille en cm de votre "+nourisson+" : ")
+    try:
+        taille = float(taille)
+        ko=False
+    except ValueError:
+        print("Entrez un nombre.")
+
+ko=True
+while ko :
+    perimetre = input("Entrez le perimetre en cm de votre "+nourisson+" : ")
+    try:
+        perimetre = float(perimetre)
+        ko=False
+    except ValueError:
+        print("Entrez un nombre.")
+
+# =======================
+#    lecture des tables
+#========================
+print()
+print("La norme de poids pour " + article + nourisson + " de " +str(age) + " mois est située")
+print(f" entre {table_min_poids[age]} et {table_max_poids[age]}  kg")
+if poids >= table_min_poids[age] and poids <= table_max_poids[age] :
+    print(f"Le poids de votre {nourisson} ({poids} kg) est dans la norme")
+else :
+    print(f"Le poids de votre {nourisson} ({poids} kg) n'est pas dans la norme !!!")
+
+print()
+print("La norme de taille pour " + article + nourisson + " de " +str(age) + " mois est située")
+print(f" entre {table_min_taille[age]} et {table_max_taille[age]}  cm")
+if taille >= table_min_taille[age] and taille <= table_max_taille[age] :
+    print(f"Le taille de votre {nourisson} ({taille} cm) est dans la norme")
+else :
+    print(f"Le taille de votre {nourisson} ({taille} cm) n'est pas dans la norme !!!")
+
+print()
+print("La norme de perimetre pour " + article + nourisson + " de " +str(age) + " mois est située")
+print(f" entre {table_min_perimetre[age]} et {table_max_perimetre[age]}  cm")
+if perimetre >= table_min_perimetre[age] and perimetre <= table_max_perimetre[age] :
+    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) est dans la norme")
+else :
+    print(f"Le perimetre de votre {nourisson} ({perimetre} cm) n'est pas dans la norme !!!")
+print()
+
+
+
+
+# La norme de poids pour une <nourisson> de <age> mois est situé entre <poids> kg et <poids> kg
+# Le poids de votre nourisson en kg : <poids>
